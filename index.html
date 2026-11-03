@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --azul: #0070a8;
+            --azul-osc: #005890;
+            --verde: #13803a;
+            --verde-osc: #0e6a2f;
+            --rojo: #c4121a;
+            --rojo-osc: #a50f16;
+            --amarillo: #f8d000;
+            --color-fondo: #fffbe6;
+            --color-texto: #333;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+
+        .cabecera {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+
+        .cabecera img {
+            width: 260px;
+            max-width: 70%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .introduccion {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--amarillo);
+            text-align: center;
+        }
+
+        .introduccion p { margin: 0; }
+
+        .accordion {
+            --color: var(--azul);
+            --color-osc: var(--azul-osc);
+            background-color: var(--color);
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: 0.3s;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion.c-azul { --color: var(--azul); --color-osc: var(--azul-osc); }
+        .accordion.c-verde { --color: var(--verde); --color-osc: var(--verde-osc); }
+        .accordion.c-rojo { --color: var(--rojo); --color-osc: var(--rojo-osc); }
+
+        .active, .accordion:hover { background-color: var(--color-osc); }
+
+        .accordion:focus-visible { outline: 3px solid #333; outline-offset: 2px; }
+
+        .accordion:after { content: '\002B'; font-size: 1.5rem; }
+        .active:after { content: "\2212"; }
+
+        .panel {
+            padding: 0 20px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .accordion.c-azul + .panel { --color: var(--azul); }
+        .accordion.c-verde + .panel { --color: var(--verde); }
+        .accordion.c-rojo + .panel { --color: var(--rojo); }
+
+        .btn-link {
+            display: inline-block;
+            color: var(--color);
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            background-color: white;
+        }
+
+        .btn-link:hover, .btn-link:focus-visible {
+            background-color: var(--color);
+            color: white;
+        }
+
+        h3.eje-nombre {
+            color: var(--color);
+            font-size: 1rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .grid-enlaces {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body id="inicio">
+    <header class="cabecera">
+        <img src="logo.png" alt="Actividades.com.ar" width="354" height="179">
+    </header>
+
+    <div class="container">
+
+        <div class="introduccion">
+            <p>Fichas de actividades en PDF organizadas por tema. Desplegá cada panel para acceder a los archivos. Todos los enlaces se abren en una pestaña nueva.</p>
+        </div>
+
+        <button class="accordion c-azul" aria-expanded="false">Numeración</button>
+        <div class="panel">
+            <h3 class="eje-nombre">Hasta 100</h3>
+            <div class="grid-enlaces">
+                <a href="numeracion/100_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="numeracion/100_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="numeracion/100_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="numeracion/100_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="numeracion/100_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Hasta 1000</h3>
+            <div class="grid-enlaces">
+                <a href="numeracion/1000_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="numeracion/1000_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="numeracion/1000_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="numeracion/1000_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="numeracion/1000_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Hasta 10000</h3>
+            <div class="grid-enlaces">
+                <a href="numeracion/10000_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="numeracion/10000_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="numeracion/10000_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="numeracion/10000_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="numeracion/10000_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Numeración 2</h3>
+            <div class="grid-enlaces">
+                <a href="numeracion/numeracion2_1.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="numeracion/numeracion2_2.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="numeracion/numeracion2_3.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="numeracion/numeracion2_4.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="numeracion/numeracion2_5.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+                <a href="numeracion/numeracion2_6.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 6</a>
+                <a href="numeracion/numeracion2_7.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 7</a>
+                <a href="numeracion/numeracion2_8.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 8</a>
+                <a href="numeracion/numeracion2_9.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 9</a>
+                <a href="numeracion/numeracion2_10.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 10</a>
+            </div>
+        </div>
+
+        <button class="accordion c-verde" aria-expanded="false">Operaciones</button>
+        <div class="panel">
+            <h3 class="eje-nombre">Sumas y restas sin reagrupamiento</h3>
+            <div class="grid-enlaces">
+                <a href="operaciones/sumares_sinreagrup_1.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="operaciones/sumares_sinreagrup_2.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="operaciones/sumares_sinreagrup_3.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="operaciones/sumares_sinreagrup_4.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="operaciones/sumares_sinreagrup_5.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Sumas y restas con reagrupamiento</h3>
+            <div class="grid-enlaces">
+                <a href="operaciones/sumares_conreagrup_1.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="operaciones/sumares_conreagrup_2.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="operaciones/sumares_conreagrup_3.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="operaciones/sumares_conreagrup_4.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="operaciones/sumares_conreagrup_5.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Multiplicación por 1 cifra</h3>
+            <div class="grid-enlaces">
+                <a href="operaciones/multi_1cifra_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="operaciones/multi_1cifra_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="operaciones/multi_1cifra_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="operaciones/multi_1cifra_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="operaciones/multi_1cifra_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Multiplicación por 2 cifras</h3>
+            <div class="grid-enlaces">
+                <a href="operaciones/multi_2cifras_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="operaciones/multi_2cifras_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="operaciones/multi_2cifras_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="operaciones/multi_2cifras_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="operaciones/multi_2cifras_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Las 4 operaciones</h3>
+            <div class="grid-enlaces">
+                <a href="operaciones/4operaciones_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="operaciones/4operaciones_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="operaciones/4operaciones_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="operaciones/4operaciones_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="operaciones/4operaciones_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+                <a href="operaciones/4operaciones_06.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 6</a>
+                <a href="operaciones/4operaciones_07.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 7</a>
+                <a href="operaciones/4operaciones_08.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 8</a>
+                <a href="operaciones/4operaciones_09.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 9</a>
+                <a href="operaciones/4operaciones_10.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 10</a>
+            </div>
+        </div>
+
+        <button class="accordion c-rojo" aria-expanded="false">Problemas</button>
+        <div class="panel">
+            <h3 class="eje-nombre">Problemas aditivos hasta 100</h3>
+            <div class="grid-enlaces">
+                <a href="problemas/ca_100_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="problemas/ca_100_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="problemas/ca_100_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="problemas/ca_100_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+            </div>
+
+            <h3 class="eje-nombre">Problemas aditivos hasta 1000</h3>
+            <div class="grid-enlaces">
+                <a href="problemas/ca_1000_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="problemas/ca_1000_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="problemas/ca_1000_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="problemas/ca_1000_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="problemas/ca_1000_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+            </div>
+
+            <h3 class="eje-nombre">Problemas multiplicativos</h3>
+            <div class="grid-enlaces">
+                <a href="problemas/cm_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="problemas/cm_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="problemas/cm_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="problemas/cm_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="problemas/cm_05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+                <a href="problemas/cm_06.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 6</a>
+                <a href="problemas/cm_07.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 7</a>
+                <a href="problemas/cm_08.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 8</a>
+                <a href="problemas/cm_09.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 9</a>
+            </div>
+
+            <h3 class="eje-nombre">Problemas mixtos</h3>
+            <div class="grid-enlaces">
+                <a href="problemas/mixtos_01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="problemas/mixtos_02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="problemas/mixtos_03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="problemas/mixtos_04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+            </div>
+
+            <h3 class="eje-nombre">Problemas con imágenes</h3>
+            <div class="grid-enlaces">
+                <a href="problemas/con_imagen01.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 1</a>
+                <a href="problemas/con_imagen02.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 2</a>
+                <a href="problemas/con_imagen03.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 3</a>
+                <a href="problemas/con_imagen04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
+                <a href="problemas/con_imagen05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
+                <a href="problemas/con_imagen06.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 6</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var abierto = this.classList.contains("active");
+                this.setAttribute("aria-expanded", abierto ? "true" : "false");
+                var panel = this.nextElementSibling;
+                panel.style.maxHeight = abierto ? panel.scrollHeight + "px" : null;
+            });
+        }
+    </script>
+
+</body>
+</html>
