@@ -16,6 +16,8 @@
             --rojo-osc: #a50f16;
             --violeta: #6a3d9a;
             --violeta-osc: #53307a;
+            --naranja: #b85400;
+            --naranja-osc: #964400;
             --amarillo: #f8d000;
             --color-fondo: #fffbe6;
             --color-texto: #333;
@@ -87,6 +89,7 @@
         .accordion.c-verde { --color: var(--verde); --color-osc: var(--verde-osc); }
         .accordion.c-rojo { --color: var(--rojo); --color-osc: var(--rojo-osc); }
         .accordion.c-violeta { --color: var(--violeta); --color-osc: var(--violeta-osc); }
+        .accordion.c-naranja { --color: var(--naranja); --color-osc: var(--naranja-osc); }
 
         .active, .accordion:hover { background-color: var(--color-osc); }
 
@@ -110,11 +113,20 @@
         .accordion.c-verde + .panel { --color: var(--verde); }
         .accordion.c-rojo + .panel { --color: var(--rojo); }
         .accordion.c-violeta + .panel { --color: var(--violeta); }
+        .accordion.c-naranja + .panel { --color: var(--naranja); }
 
         h2.area {
             color: #000;
             font-size: 1.6rem;
             margin: 30px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+
+        h2.area img {
+            height: 1.7em;
+            width: auto;
         }
 
         .panel .grid-enlaces:first-child { padding-top: 20px; }
@@ -154,6 +166,30 @@
             gap: 10px;
             padding-bottom: 20px;
         }
+
+        .lista-cuentos {
+            list-style: none;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .lista-cuentos li {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .lista-cuentos li + li { border-top: 1px solid #eee; }
+
+        .cuento-nombre { font-weight: 700; }
+
+        .cuento-botones {
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
 <body id="inicio">
@@ -167,7 +203,7 @@
             <p>Fichas de actividades en PDF organizadas por tema. Desplegá cada panel para acceder a los archivos. Todos los enlaces se abren en una pestaña nueva.</p>
         </div>
 
-        <h2 class="area">Matemática</h2>
+        <h2 class="area"><img src="images/carpi1.png" alt="">Matemática</h2>
 
         <button class="accordion c-azul" aria-expanded="false">Numeración</button>
         <div class="panel">
@@ -317,7 +353,7 @@
             </div>
         </div>
 
-        <h2 class="area">Lengua</h2>
+        <h2 class="area"><img src="images/carpi1.png" alt="">Lengua</h2>
 
         <button class="accordion c-violeta" aria-expanded="false">Alfabetización</button>
         <div class="panel">
@@ -326,6 +362,40 @@
                 <a href="lengua/alfabetizacion/inicio_vocales.pdf" target="_blank" rel="noopener" class="btn-link">Inicio vocales</a>
                 <a href="lengua/alfabetizacion/memotest.pdf" target="_blank" rel="noopener" class="btn-link">Memotest</a>
             </div>
+        </div>
+
+        <button class="accordion c-naranja" aria-expanded="false">Cuentos cortos y fichas de actividades</button>
+        <div class="panel">
+            <ul class="lista-cuentos">
+                <li>
+                    <span class="cuento-nombre">El robo del tesoro soñado</span>
+                    <span class="cuento-botones">
+                        <a href="lengua/cuentos_cortos/el_robo_del_tesoro_sonado_cuento.pdf" target="_blank" rel="noopener" class="btn-link">Texto</a>
+                        <a href="lengua/cuentos_cortos/el_robo_del_tesoro_sonado_fichas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="cuento-nombre">La casa encantada</span>
+                    <span class="cuento-botones">
+                        <a href="lengua/cuentos_cortos/la_casa_encantada_cuento.pdf" target="_blank" rel="noopener" class="btn-link">Texto</a>
+                        <a href="lengua/cuentos_cortos/la_casa_encantada_fichas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="cuento-nombre">La sentencia</span>
+                    <span class="cuento-botones">
+                        <a href="lengua/cuentos_cortos/la_sentencia_cuento.pdf" target="_blank" rel="noopener" class="btn-link">Texto</a>
+                        <a href="lengua/cuentos_cortos/la_sentencia_fichas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="cuento-nombre">Una liebre inteligente</span>
+                    <span class="cuento-botones">
+                        <a href="lengua/cuentos_cortos/una_liebre_inteligente_cuento.pdf" target="_blank" rel="noopener" class="btn-link">Texto</a>
+                        <a href="lengua/cuentos_cortos/una_liebre_inteligente_fichas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas</a>
+                    </span>
+                </li>
+            </ul>
         </div>
 
     </div>
