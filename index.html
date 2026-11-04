@@ -14,6 +14,8 @@
             --verde-osc: #0e6a2f;
             --rojo: #c4121a;
             --rojo-osc: #a50f16;
+            --violeta: #6a3d9a;
+            --violeta-osc: #53307a;
             --amarillo: #f8d000;
             --color-fondo: #fffbe6;
             --color-texto: #333;
@@ -84,6 +86,7 @@
         .accordion.c-azul { --color: var(--azul); --color-osc: var(--azul-osc); }
         .accordion.c-verde { --color: var(--verde); --color-osc: var(--verde-osc); }
         .accordion.c-rojo { --color: var(--rojo); --color-osc: var(--rojo-osc); }
+        .accordion.c-violeta { --color: var(--violeta); --color-osc: var(--violeta-osc); }
 
         .active, .accordion:hover { background-color: var(--color-osc); }
 
@@ -106,6 +109,15 @@
         .accordion.c-azul + .panel { --color: var(--azul); }
         .accordion.c-verde + .panel { --color: var(--verde); }
         .accordion.c-rojo + .panel { --color: var(--rojo); }
+        .accordion.c-violeta + .panel { --color: var(--violeta); }
+
+        h2.area {
+            color: #000;
+            font-size: 1.6rem;
+            margin: 30px 0 0;
+        }
+
+        .panel .grid-enlaces:first-child { padding-top: 20px; }
 
         .btn-link {
             display: inline-block;
@@ -154,6 +166,8 @@
         <div class="introduccion">
             <p>Fichas de actividades en PDF organizadas por tema. Desplegá cada panel para acceder a los archivos. Todos los enlaces se abren en una pestaña nueva.</p>
         </div>
+
+        <h2 class="area">Matemática</h2>
 
         <button class="accordion c-azul" aria-expanded="false">Numeración</button>
         <div class="panel">
@@ -300,6 +314,17 @@
                 <a href="problemas/con_imagen04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
                 <a href="problemas/con_imagen05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
                 <a href="problemas/con_imagen06.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 6</a>
+            </div>
+        </div>
+
+        <h2 class="area">Lengua</h2>
+
+        <button class="accordion c-violeta" aria-expanded="false">Alfabetización</button>
+        <div class="panel">
+            <div class="grid-enlaces">
+                <a href="lengua/alfabetizacion/iniciales_mpls.pdf" target="_blank" rel="noopener" class="btn-link">Iniciales mpls</a>
+                <a href="lengua/alfabetizacion/inicio_vocales.pdf" target="_blank" rel="noopener" class="btn-link">Inicio vocales</a>
+                <a href="lengua/alfabetizacion/memotest.pdf" target="_blank" rel="noopener" class="btn-link">Memotest</a>
             </div>
         </div>
 
