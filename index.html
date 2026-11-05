@@ -18,6 +18,8 @@
             --violeta-osc: #53307a;
             --naranja: #b85400;
             --naranja-osc: #964400;
+            --turquesa: #00796b;
+            --turquesa-osc: #005f54;
             --amarillo: #f8d000;
             --color-fondo: #fffbe6;
             --color-texto: #333;
@@ -100,6 +102,8 @@
         .accordion.c-violeta { --color: var(--violeta); --color-osc: var(--violeta-osc); }
         .accordion.c-naranja { --color: var(--naranja); --color-osc: var(--naranja-osc); }
 
+        .accordion.c-turquesa { --color: var(--turquesa); --color-osc: var(--turquesa-osc); }
+
         .active, .accordion:hover { background-color: var(--color-osc); }
 
         .accordion:focus-visible { outline: 3px solid #333; outline-offset: 2px; }
@@ -123,6 +127,7 @@
         .accordion.c-rojo + .panel { --color: var(--rojo); }
         .accordion.c-violeta + .panel { --color: var(--violeta); }
         .accordion.c-naranja + .panel { --color: var(--naranja); }
+        .accordion.c-turquesa + .panel { --color: var(--turquesa); }
 
         h2.area {
             color: #000;
@@ -359,6 +364,19 @@
                 <a href="problemas/con_imagen04.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 4</a>
                 <a href="problemas/con_imagen05.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 5</a>
                 <a href="problemas/con_imagen06.pdf" target="_blank" rel="noopener" class="btn-link">Ficha 6</a>
+            </div>
+        </div>
+
+        <button class="accordion c-turquesa" aria-expanded="false">Fichas individuales en color</button>
+        <div class="panel">
+            <h3 class="eje-nombre">Para identificar problemas y resolver</h3>
+            <div class="grid-enlaces">
+                <a href="fichas_individuales_en_color/fichas_problemas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas problemas</a>
+            </div>
+
+            <h3 class="eje-nombre">Fichas numeración hasta 3.000</h3>
+            <div class="grid-enlaces">
+                <a href="fichas_individuales_en_color/fichas_numeracion.pdf" target="_blank" rel="noopener" class="btn-link">Fichas numeración</a>
             </div>
         </div>
 
