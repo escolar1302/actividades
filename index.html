@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividades</title>
+    <title>Actividades escolares para imprimir</title>
+    <meta name="description" content="Fichas de actividades escolares en PDF para imprimir: numeración, operaciones, problemas, alfabetización, cuentos cortos...">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -54,6 +55,18 @@
             width: 130px;
             max-width: 100%;
             display: block;
+        }
+
+        .solo-lectores {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .container {
@@ -208,10 +221,12 @@
 <body id="inicio">
     <header class="cabecera">
         <img src="logo.png" alt="Actividades.com.ar" width="354" height="179">
-        <a href="https://escolar.com.ar/"><img src="logo1.png" alt="Escolar 1302" width="841" height="768"></a>
+        <a href="https://escolar.com.ar/"><img src="logo1.png" alt="Ir a escolar.com.ar" width="260" height="237"></a>
     </header>
 
-    <div class="container">
+    <main class="container">
+
+        <h1 class="solo-lectores">Actividades escolares para imprimir</h1>
 
         <div class="introduccion">
             <p>Fichas de actividades en PDF organizadas por tema. Desplegá cada panel para acceder a los archivos. Todos los enlaces se abren en una pestaña nueva.</p>
@@ -424,23 +439,33 @@
                         <a href="lengua/cuentos_cortos/una_liebre_inteligente_fichas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas</a>
                     </span>
                 </li>
+                <li>
+                    <span class="cuento-nombre">El traje nuevo del emperador</span>
+                    <span class="cuento-botones">
+                        <a href="lengua/cuentos_cortos/el_traje_nuevo_del_emperador_cuento.pdf" target="_blank" rel="noopener" class="btn-link">Texto</a>
+                        <a href="lengua/cuentos_cortos/el_traje_nuevo_del_emperador_fichas.pdf" target="_blank" rel="noopener" class="btn-link">Fichas</a>
+                    </span>
+                </li>
             </ul>
         </div>
 
-    </div>
+    </main>
 
     <script>
         var acc = document.getElementsByClassName("accordion");
         for (var i = 0; i < acc.length; i++) {
+            acc[i].nextElementSibling.inert = true;
             acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var abierto = this.classList.contains("active");
                 this.setAttribute("aria-expanded", abierto ? "true" : "false");
                 var panel = this.nextElementSibling;
+                panel.inert = !abierto;
                 panel.style.maxHeight = abierto ? panel.scrollHeight + "px" : null;
             });
         }
     </script>
+    <script src="pie.js"></script>
 
 </body>
 </html>
