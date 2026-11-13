@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro de capítulos 828–900</title>
+<style>
+  :root{--bg:#f6f5f1;--card:#fff;--ink:#1d1d1b;--mute:#76736b;--line:#e4e1d8;--ok:#2f7d4f;--okbg:#e6f2ea;--accent:#c4501b}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--card:#212120;--ink:#f0eee8;--mute:#9a968c;--line:#333330;--ok:#6fcf97;--okbg:#1f3328;--accent:#f08a54}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+  h1{margin:0 0 8px;font-size:18px}
+  .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+  .bar>i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+  .row1{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;font-size:14px;color:var(--mute)}
+  button{font:inherit;cursor:pointer}
+  .next{background:var(--accent);color:#fff;border:0;border-radius:99px;padding:6px 14px;font-weight:600}
+  .next[disabled]{opacity:.4}
+  main{max-width:520px;margin:0 auto;padding:10px 12px 60px}
+  label.item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  label.item.done{background:var(--okbg);border-color:transparent}
+  label.item.done .n{color:var(--mute);text-decoration:line-through}
+  label.item.cur{outline:2px solid var(--accent)}
+  .n{font-size:22px;font-weight:600;flex:1;font-variant-numeric:tabular-nums}
+  input[type=checkbox]{width:28px;height:28px;accent-color:var(--ok);margin:0}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+  .modal.on{display:flex}
+  .box{background:var(--card);border-radius:16px;padding:22px;max-width:340px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+  .box p{margin:0 0 18px;font-size:17px}
+  .btns{display:flex;gap:10px}
+  .btns button{flex:1;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+  .btns .yes{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  #sync{font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Capítulos 828 – 900</h1>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="row1"><span id="count"></span><button class="next" id="go">Ir al próximo</button></div>
+</header>
+<main id="list"></main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="box">
+    <p id="msg"></p>
+    <div class="btns"><button id="no">Cancelar</button><button class="yes" id="yes">Aceptar</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FROM=828, TO=900, KEY="serie-828-900";
+  var seen={}, list=document.getElementById("list"), saveRef=null;
+
+  // cargar copia local (si hay)
+  try{ var l=JSON.parse(localStorage.getItem(KEY)||"[]"); l.forEach(function(n){seen[n]=1}); }catch(e){}
+
+  function nextUnseen(){ for(var n=FROM;n<=TO;n++) if(!seen[n]) return n; return null; }
+
+  function build(){
+    var h="";
+    for(var n=FROM;n<=TO;n++) h+='<label class="item" data-n="'+n+'"><span class="n">'+n+'</span><input type="checkbox" data-n="'+n+'"></label>';
+    list.innerHTML=h;
+  }
+  function paint(){
+    var cur=nextUnseen(), c=0;
+    list.querySelectorAll("label.item").forEach(function(el){
+      var n=+el.dataset.n, on=!!seen[n]; if(on)c++;
+      el.classList.toggle("done",on); el.classList.toggle("cur",n===cur);
+      el.querySelector("input").checked=on;
+    });
+    var total=TO-FROM+1;
+    document.getElementById("bar").style.width=(c/total*100)+"%";
+    document.getElementById("count").textContent=c+" de "+total+" vistos"+(cur?" · próximo: "+cur:" · ¡completa!");
+    document.getElementById("go").disabled=!cur;
+  }
+  function persist(){
+    var arr=Object.keys(seen).map(Number);
+    try{ localStorage.setItem(KEY,JSON.stringify(arr)); }catch(e){}
+    if(saveRef){ try{ saveRef.set({seen:arr}); }catch(e){} }
+  }
+
+  // confirmación al destildar
+  var modal=document.getElementById("modal"), pending=null;
+  function ask(n){ pending=n; document.getElementById("msg").textContent="¿Sacar el tilde del "+n+"?"; modal.classList.add("on"); }
+  function close(){ modal.classList.remove("on"); pending=null; paint(); }
+  document.getElementById("no").onclick=close;
+  document.getElementById("yes").onclick=function(){ if(pending!=null){ delete seen[pending]; persist(); } close(); };
+  modal.addEventListener("click",function(e){ if(e.target===modal) close(); });
+
+  list.addEventListener("change",function(e){
+    var n=+e.target.dataset.n;
+    if(e.target.checked){ seen[n]=1; persist(); paint(); }
+    else { e.target.checked=true; ask(n); } // vuelve a tildar hasta que acepte
+  });
+
+  document.getElementById("go").onclick=function(){
+    var n=nextUnseen(); if(!n) return;
+    var el=list.querySelector('[data-n="'+n+'"]'); el.scrollIntoView({behavior:"smooth",block:"center"});
+  };
+
+  build(); paint();
+  var c0=nextUnseen(); if(c0&&c0>FROM) setTimeout(function(){ var el=list.querySelector('[data-n="'+c0+'"]'); if(el) el.scrollIntoView({block:"center"}); },50);
+
+  // sincronización entre dispositivos (si está disponible)
+  (async function(){
+    try{
+      if(!window.claude) return;
+      var db=await claude.use("db"), user=await claude.use("user");
+      if(!db||!user) return;
+      var id=await user.id();
+      saveRef=db.collection("data/users/"+id).doc("progress");
+      var snap=await saveRef.get();
+      var d=snap&&(typeof snap.data==="function"?snap.data():snap);
+      if(d&&d.seen){ seen={}; d.seen.forEach(function(n){seen[n]=1}); paint(); }
+      else if(Object.keys(seen).length) persist();
+    }catch(e){}
+  })();
+})();
+</script>
+</body>
+</html>
